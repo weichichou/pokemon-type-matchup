@@ -11,7 +11,7 @@ describe('Get Type By Name', () => {
             }})
         }
         const type = await getType(input, superagent);
-        expect(type).toEqual(['flying'])
+        expect(type).toEqual('flying')
     })
 
     test('charizard is flying and fire-type', async() => {
@@ -25,7 +25,7 @@ describe('Get Type By Name', () => {
             }})
         }
         const type = await getType(input, superagent);
-        expect(type).toEqual(['flying', 'fire'])
+        expect(type).toEqual('flying')
     })
 })
 
