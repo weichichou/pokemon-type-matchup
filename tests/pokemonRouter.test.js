@@ -29,4 +29,16 @@ describe('Damage Relation', () => {
         expect(damageRelation).toEqual('half_damage_to')
     })
 
+    test('Water to poison is normal effectiveness', async() => {
+        const enemy = 'poison';
+        const mine = 'water';
+        const superagent = {
+            "get": jest.fn().mockResolvedValue({"body": {
+                "damage_relations":{ }
+            }})
+        }
+        const damageRelation = await typeMatchup(enemy, mine, superagent);
+        expect(damageRelation).toEqual('normal effectiveness')
+    })
+
 })

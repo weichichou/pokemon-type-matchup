@@ -7,6 +7,7 @@ const typeMatchup = async(enemy, mine, superagent) => {
             return property
         }
     }
+    return 'normal effectiveness'
 }
 
 module.exports = { typeMatchup }
