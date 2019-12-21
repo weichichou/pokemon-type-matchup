@@ -1,3 +1,8 @@
+const getType = async(input, superagent) => {
+    const res = await superagent.get(`https://pokeapi.co/api/v2/pokemon/${input}`)
+    return res.body.types[0].type.name
+}
+
 const typeMatchup = async(enemy, mine, superagent) => {
     const res = await superagent.get(`https://pokeapi.co/api/v2/type/${mine}`)
     const { damage_relations } = res.body
@@ -10,4 +15,4 @@ const typeMatchup = async(enemy, mine, superagent) => {
     return 'normal effectiveness'
 }
 
-module.exports = { typeMatchup }
+module.exports = { getType, typeMatchup }

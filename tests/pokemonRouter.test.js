@@ -1,4 +1,21 @@
-const { typeMatchup } = require('../routers/pokemonRouter')
+const { getType, typeMatchup } = require('../routers/pokemonRouter')
+
+describe('Get Type By Name', () => {
+    test('butterfree is flying-type', async() => {
+        const input = 'butterfree';
+        const superagent = {
+            "get": jest.fn().mockResolvedValue({"body": {
+                "types": [{
+                    "type": {
+                        "name": "flying"
+                    }
+                }]
+            }})
+        }
+        const type = await getType(input, superagent);
+        expect(type).toEqual('flying')
+    })
+})
 
 describe('Damage Relation', () => {
     test('Water to fire is double damage', async() => {
