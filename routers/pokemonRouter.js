@@ -1,6 +1,7 @@
 const getType = async(input, superagent) => {
     const res = await superagent.get(`https://pokeapi.co/api/v2/pokemon/${input}`)
-    return res.body.types[0].type.name
+    const { types } = res.body
+    return types.map(item => item.type.name)
 }
 
 const typeMatchup = async(enemy, mine, superagent) => {

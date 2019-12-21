@@ -6,14 +6,26 @@ describe('Get Type By Name', () => {
         const superagent = {
             "get": jest.fn().mockResolvedValue({"body": {
                 "types": [{
-                    "type": {
-                        "name": "flying"
-                    }
+                    "type": { "name": "flying" }
                 }]
             }})
         }
         const type = await getType(input, superagent);
-        expect(type).toEqual('flying')
+        expect(type).toEqual(['flying'])
+    })
+
+    test('charizard is flying and fire-type', async() => {
+        const input = 'charizard';
+        const superagent = {
+            "get": jest.fn().mockResolvedValue({"body": {
+                "types": [
+                    { "type": { "name": "flying" } }, 
+                    { "type": { "name": "fire" } }
+                ]
+            }})
+        }
+        const type = await getType(input, superagent);
+        expect(type).toEqual(['flying', 'fire'])
     })
 })
 
