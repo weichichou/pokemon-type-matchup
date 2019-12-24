@@ -41,7 +41,9 @@ const matchupHandler = async(req, res) => {
         res.status(200).send(result)
     }
     catch(error){
-        // if error.... 
+        if(error.status === 404){
+            res.status(404).send('Please check your input')
+        }
         res.status(500).send('Failed to call the pokeapi')
     }
 }
