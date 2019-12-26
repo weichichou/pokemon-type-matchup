@@ -2,48 +2,42 @@
 
 <template>
     <div id="app" class="small-container">
-        <h1>Employees</h1>
-        <employee-form @add:employee="addEmployee" />
+        <h1>Pokemon Matchup</h1>
+        <pokemon-table :pokemons="pokemons" />
+
+        <!-- <employee-form @add:employee="addEmployee" />
         <employee-table
             :employees="employees"
             @delete:employee="deleteEmployee"
             @edit:employee="editEmployee"
-        />
+        /> -->
     </div>
 </template>
 
 <script>
-import EmployeeForm from "./components/EmployeeForm.vue";
-import EmployeeTable from "./components/EmployeeTable.vue";
+import PokemonTable from "./components/PokemonTable";
+/* import EmployeeForm from "./components/EmployeeForm.vue";
+import EmployeeTable from "./components/EmployeeTable.vue"; */
 
 export default {
     name: "app",
     components: {
-        EmployeeTable,
-        EmployeeForm
+        PokemonTable
+        //EmployeeForm
     },
     data() {
         return {
-            employees: [
+            pokemons: [
                 {
                     id: 1,
-                    name: "Rich",
-                    email: "rich@rich.com"
-                },
-                {
-                    id: 2,
-                    name: "Bert",
-                    email: "bert@bert.com"
-                },
-                {
-                    id: 3,
-                    name: "Di",
-                    email: "di@di.com"
+                    yours: "Pikachu",
+                    enemy: "Butterfree",
+                    results: "Double damage"
                 }
             ]
         };
-    },
-    methods: {
+    }
+    /* methods: {
         addEmployee(employee) {
             const lastId =
                 this.employees.length > 0
@@ -64,7 +58,7 @@ export default {
                 employee.id === id ? updatedEmployee : employee
             );
         }
-    }
+    } */
 };
 </script>
 
