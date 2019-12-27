@@ -3,7 +3,9 @@
 <template>
     <div id="app" class="small-container">
         <h1>Pokemon Matchup</h1>
-        <pokemon-table :pokemons="pokemons" />
+        <matchup-form />
+
+        <!-- <pokemon-table :pokemons="pokemons" /> -->
 
         <!-- <employee-form @add:employee="addEmployee" />
         <employee-table
@@ -15,15 +17,16 @@
 </template>
 
 <script>
-import PokemonTable from "./components/PokemonTable";
+import MatchupForm from "./components/MatchupForm";
+// import PokemonTable from "./components/PokemonTable";
 /* import EmployeeForm from "./components/EmployeeForm.vue";
 import EmployeeTable from "./components/EmployeeTable.vue"; */
 
 export default {
     name: "app",
     components: {
-        PokemonTable
-        //EmployeeForm
+        //PokemonTable
+        MatchupForm
     },
     data() {
         return {
@@ -63,10 +66,10 @@ export default {
 </script>
 
 <style>
-button {
+/* button {
     background: #009435;
     border: 1px solid #009435;
-}
+} */
 
 .small-container {
     max-width: 6980px;
