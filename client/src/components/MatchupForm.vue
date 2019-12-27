@@ -34,7 +34,7 @@ export default {
         async handleSubmit() {
             try {
                 const response = await fetch(
-                    `http://localhost:3000/matchup?mine=${this.matchup.mine}&enemy=${this.matchup.enemy}`
+                    `http://localhost:3000/matchup?mine=${this.mineToLowerCase}&enemy=${this.enemyToLowerCase}`
                 );
                 const data = await response.json();
                 this.results = this.makeSentence(data);
@@ -56,6 +56,14 @@ export default {
                     "Normal effectiveness for this type matchup."
             };
             return array.map(item => convert[item]);
+        }
+    },
+    computed: {
+        mineToLowerCase() {
+            return this.matchup.mine.toLowerCase();
+        },
+        enemyToLowerCase() {
+            return this.matchup.enemy.toLowerCase();
         }
     }
 };
