@@ -78,7 +78,7 @@ describe("Damage Relation", () => {
       })
     };
     const damageRelation = await typeMatchup(enemy, mine, superagent);
-    expect(damageRelation).toEqual("normal effectiveness");
+    expect(damageRelation).toEqual(["normal effectiveness"]);
   });
 });
 

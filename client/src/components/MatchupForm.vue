@@ -51,7 +51,9 @@ export default {
                 half_damage_from:
                     "You will receive 0.5x damage from the enemy.",
                 no_damage_to: "You will make no damage to the enemy.",
-                no_damage_from: "You will receive no damage from the enemy."
+                no_damage_from: "You will receive no damage from the enemy.",
+                "normal effectiveness":
+                    "Normal effectiveness for this type matchup."
             };
             return array.map(item => convert[item]);
         }

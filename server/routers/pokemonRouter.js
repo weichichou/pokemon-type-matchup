@@ -29,7 +29,7 @@ const typeMatchup = async (enemy, mine, httpClient) => {
   if (result.length !== 0) {
     return result;
   } else {
-    return "normal effectiveness";
+    return ["normal effectiveness"];
   }
 };
 
