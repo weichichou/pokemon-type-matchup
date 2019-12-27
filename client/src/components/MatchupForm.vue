@@ -2,9 +2,19 @@
     <div id="matchup-form">
         <form @submit.prevent="handleSubmit">
             <label>My Pokemon</label>
-            <input type="text" v-model="matchup.mine" />
+            <input
+                type="text"
+                v-model="matchup.mine"
+                placeholder="charmander"
+                @focus="clearStatus"
+            />
             <label>Enemy Pokemon</label>
-            <input type="text" v-model="matchup.enemy" />
+            <input
+                type="text"
+                v-model="matchup.enemy"
+                placeholder="bulbasaur"
+                @focus="clearStatus"
+            />
             <button>Show Results</button>
         </form>
         <div v-if="results.length > 0">
@@ -56,9 +66,19 @@ export default {
                     "Normal effectiveness for this type matchup."
             };
             return array.map(item => convert[item]);
+        },
+        clearStatus() {
+            this.success = false;
+            this.error = false;
         }
     },
     computed: {
+        invalidMine() {
+            return this.matchup.mine === "";
+        },
+        invalidEnemy() {
+            return this.matchup.enemy === "";
+        },
         mineToLowerCase() {
             return this.matchup.mine.toLowerCase();
         },
