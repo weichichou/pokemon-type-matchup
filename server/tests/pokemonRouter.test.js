@@ -1,8 +1,4 @@
-const {
-  getType,
-  typeMatchup,
-  matchupHandler
-} = require("../routers/pokemonRouter");
+const { getType, typeMatchup } = require("../routers/pokemonRouter");
 
 describe("Get Type By Name", () => {
   test("butterfree is flying-type", async () => {
