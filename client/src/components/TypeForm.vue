@@ -2,9 +2,10 @@
     <div id="type-form">
         <form @submit.prevent="handleSubmit">
             <input type="text" v-model="pokemon" :placeholder="side" />
+            <br />
             <button>Show Type</button>
         </form>
-        <div v-if="imgUrl !== ''">
+        <div v-if="imgUrl !== ''" class="detail-div">
             <img :src="imgUrl" />
             <p v-for="type in typeArray" :key="type">
                 {{ type }}
@@ -42,3 +43,11 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.detail-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
