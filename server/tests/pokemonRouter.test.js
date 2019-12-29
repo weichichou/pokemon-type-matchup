@@ -6,6 +6,10 @@ describe("Get Type By Name", () => {
     const superagent = {
       get: jest.fn().mockResolvedValue({
         body: {
+          sprites: {
+            front_default:
+              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+          },
           types: [
             {
               type: { name: "water" }
@@ -14,8 +18,12 @@ describe("Get Type By Name", () => {
         }
       })
     };
-    const type = await getType(input, superagent);
-    expect(type).toEqual("water");
+    const result = await getType(input, superagent);
+    expect(result).toEqual({
+      imgUrl:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
+      type: ["water"]
+    });
   });
 
   /* test("charizard is flying and fire-type", async () => {
@@ -79,24 +87,5 @@ describe("Damage Relation", () => {
     };
     const damageRelation = await typeMatchup(enemy, mine, superagent);
     expect(damageRelation).toEqual(["normal effectiveness"]);
-  });
-});
-
-describe("Get Type By Name", () => {
-  test("butterfree is flying-type", async () => {
-    const input = "butterfree";
-    const superagent = {
-      get: jest.fn().mockResolvedValue({
-        body: {
-          types: [
-            {
-              type: { name: "flying" }
-            }
-          ]
-        }
-      })
-    };
-    const type = await getType(input, superagent);
-    expect(type).toEqual("flying");
   });
 });

@@ -6,9 +6,14 @@ const getType = async (input, httpClient) => {
     console.error(error);
     throw error;
   }
-  const { types } = res.body;
-  const result = types.map(item => item.type.name);
-  return result[0];
+  const { sprites, types } = res.body;
+  const result = {
+    imgUrl: "",
+    type: []
+  };
+  result.imgUrl = sprites.front_default;
+  result.type = types.map(item => item.type.name);
+  return result;
 };
 
 const typeMatchup = async (enemy, mine, httpClient) => {
