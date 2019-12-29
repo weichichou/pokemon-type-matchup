@@ -43,8 +43,10 @@ const matchupHandler = async (req, res) => {
   const { mine, enemy } = req.query;
 
   try {
-    const myType = await getType(mine, superagent);
-    const enemyType = await getType(enemy, superagent);
+    const myDetail = await getType(mine, superagent);
+    const myType = myDetail.type[0];
+    const enemyDetail = await getType(enemy, superagent);
+    const enemyType = enemyDetail.type[0];
     const result = await typeMatchup(enemyType, myType, superagent);
     res.status(200).send(result);
   } catch (error) {
