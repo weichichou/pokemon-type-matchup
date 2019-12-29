@@ -1,7 +1,13 @@
 <template>
     <div id="type-form">
         <form @submit.prevent="handleSubmit">
-            <input type="text" v-model="pokemon" :placeholder="side" required />
+            <input
+                type="text"
+                v-model="pokemon"
+                :placeholder="side"
+                @focus="clearStatus"
+                required
+            />
             <br />
             <button>Show Type</button>
         </form>
@@ -38,6 +44,9 @@ export default {
             } catch (error) {
                 console.error(error);
             }
+        },
+        clearStatus() {
+            this.pokemon = "";
         }
     },
     computed: {
