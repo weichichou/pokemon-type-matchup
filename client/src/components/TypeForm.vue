@@ -1,8 +1,7 @@
 <template>
     <div id="type-form">
         <form @submit.prevent="handleSubmit">
-            <label>My Pokemon</label>
-            <input type="text" v-model="pokemon" />
+            <input type="text" v-model="pokemon" :placeholder="side" />
             <button>Show Type</button>
         </form>
         <div v-if="imgUrl !== ''">
@@ -37,6 +36,9 @@ export default {
                 console.error(error);
             }
         }
+    },
+    props: {
+        side: String
     }
 };
 </script>

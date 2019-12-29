@@ -4,8 +4,8 @@
     <div id="app" class="small-container">
         <h1>Pokemon Matchup</h1>
         <div class="flex">
-            <type-form />
-            <type-form />
+            <type-form :side="mine" />
+            <type-form :side="enemy" />
         </div>
 
         <!-- <matchup-form /> -->
@@ -37,7 +37,8 @@ export default {
     },
     data() {
         return {
-            pokemons: []
+            mine: "my pokemon",
+            enemy: "enemy pokemon"
         };
     }
     /* methods: {
