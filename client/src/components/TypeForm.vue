@@ -7,9 +7,11 @@
         </form>
         <div v-if="imgUrl !== ''" class="detail-div">
             <img :src="imgUrl" />
-            <p v-for="type in typeArray" :key="type">
-                {{ type }}
-            </p>
+            <div class="p-div">
+                <p v-for="type in typeArray" :key="type">
+                    {{ type }}
+                </p>
+            </div>
         </div>
     </div>
 </template>
@@ -45,9 +47,21 @@ export default {
 </script>
 
 <style scoped>
+input {
+    text-align: center;
+}
+
+button {
+    width: 100%;
+}
+
 .detail-div {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.p-div p {
+    display: block;
 }
 </style>
