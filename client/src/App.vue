@@ -8,7 +8,7 @@
             <type-form :side="enemy" @set:poke="setEnemy" />
         </div>
 
-        <matchup />
+        <matchup :mine="minePoke" :enemy="enemyPoke" />
 
         <!-- <pokemon-table :pokemons="pokemons" /> -->
 

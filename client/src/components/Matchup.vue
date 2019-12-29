@@ -17,10 +17,12 @@ export default {
             submitting: false,
             error: false,
             success: false,
-            matchup: {
+            /* matchup: {
                 mine: "",
                 enemy: ""
-            },
+            }, */
+            // myPoke: mine,
+            //enemy: "",
             results: []
         };
     },
@@ -30,15 +32,15 @@ export default {
             this.submitting = true;
             this.clearStatus();
 
-            /* try {
+            try {
                 const response = await fetch(
-                    `http://localhost:3000/matchup?mine=${this.mineToLowerCase}&enemy=${this.enemyToLowerCase}`
+                    `http://localhost:3000/matchup?mine=${this.$props.mine}&enemy=${this.$props.enemy}`
                 );
                 const data = await response.json();
                 this.results = this.makeSentence(data);
             } catch (error) {
                 console.error(error);
-            } */
+            }
         },
         makeSentence(array) {
             const convert = {
@@ -60,7 +62,10 @@ export default {
             this.error = false;
         }
     },
-    props: {}
+    props: {
+        mine: String,
+        enemy: String
+    }
 };
 </script>
 
