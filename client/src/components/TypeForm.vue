@@ -48,6 +48,9 @@ export default {
         },
         clearStatus() {
             this.pokemon = "";
+            this.imgUrl = "";
+            this.typeArray = [];
+            this.$emit("set:poke", "");
         }
     },
     computed: {

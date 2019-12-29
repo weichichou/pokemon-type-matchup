@@ -6,7 +6,10 @@
         >
             Matchup Results!
         </button>
-        <div class="result-div" v-if="results.length > 0">
+        <div
+            class="result-div"
+            v-if="results.length > 0 && this.$props.mine && this.$props.enemy"
+        >
             <p v-for="result in results" :key="result">
                 {{ result }}
             </p>
@@ -19,15 +22,11 @@ export default {
     name: "matchup",
     data() {
         return {
-            submitting: false,
-            error: false,
-            success: false,
             results: []
         };
     },
     methods: {
         async handleClick() {
-            this.submitting = true;
             this.clearStatus();
 
             try {
@@ -56,13 +55,21 @@ export default {
             return array.map(item => convert[item]);
         },
         clearStatus() {
-            this.success = false;
-            this.error = false;
+            this.results = [];
         }
     },
     props: {
         mine: String,
         enemy: String
+    },
+    watch: {
+        $props: {
+            handler(val, oldVal) {
+                console.log("props changes?", val, oldVal);
+                this.clearStatus();
+            },
+            deep: true
+        }
     }
 };
 </script>
