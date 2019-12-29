@@ -26,18 +26,26 @@ describe("Get Type By Name", () => {
     });
   });
 
-  /* test("charizard is flying and fire-type", async () => {
+  test("charizard is flying and fire-type", async () => {
     const input = "charizard";
     const superagent = {
       get: jest.fn().mockResolvedValue({
         body: {
+          sprites: {
+            front_default:
+              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+          },
           types: [{ type: { name: "flying" } }, { type: { name: "fire" } }]
         }
       })
     };
-    const type = await getType(input, superagent);
-    expect(type).toEqual("flying");
-  }); */
+    const result = await getType(input, superagent);
+    expect(result).toEqual({
+      imgUrl:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      type: ["flying", "fire"]
+    });
+  });
 });
 
 describe("Damage Relation", () => {
