@@ -3,8 +3,12 @@
 <template>
     <div id="app" class="small-container">
         <h1>Pokemon Matchup</h1>
-        <type-form />
-        <matchup-form />
+        <div class="flex">
+            <type-form />
+            <type-form />
+        </div>
+
+        <!-- <matchup-form /> -->
 
         <!-- <pokemon-table :pokemons="pokemons" /> -->
 
@@ -19,7 +23,7 @@
 
 <script>
 import TypeForm from "./components/TypeForm";
-import MatchupForm from "./components/MatchupForm";
+//import MatchupForm from "./components/MatchupForm";
 // import PokemonTable from "./components/PokemonTable";
 /* import EmployeeForm from "./components/EmployeeForm.vue";
 import EmployeeTable from "./components/EmployeeTable.vue"; */
@@ -28,19 +32,12 @@ export default {
     name: "app",
     components: {
         //PokemonTable
-        TypeForm,
-        MatchupForm
+        TypeForm
+        //MatchupForm
     },
     data() {
         return {
-            pokemons: [
-                {
-                    id: 1,
-                    yours: "Pikachu",
-                    enemy: "Butterfree",
-                    results: "Double damage"
-                }
-            ]
+            pokemons: []
         };
     }
     /* methods: {
@@ -76,5 +73,9 @@ export default {
 
 .small-container {
     max-width: 6980px;
+}
+
+.flex {
+    display: flex;
 }
 </style>
