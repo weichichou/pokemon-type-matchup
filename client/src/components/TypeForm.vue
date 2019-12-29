@@ -5,6 +5,12 @@
             <input type="text" v-model="pokemon" />
             <button>Show Type</button>
         </form>
+        <div v-if="imgUrl !== ''">
+            <img :src="imgUrl" />
+            <p v-for="type in typeArray" :key="type">
+                {{ type }}
+            </p>
+        </div>
     </div>
 </template>
 
@@ -13,7 +19,9 @@ export default {
     name: "type-form",
     data() {
         return {
-            pokemon: ""
+            pokemon: "",
+            imgUrl: "",
+            typeArray: []
         };
     },
     methods: {
@@ -22,7 +30,9 @@ export default {
                 const response = await fetch(
                     `http://localhost:3000/type/${this.pokemon}`
                 );
-                console.log("response??", response);
+                const data = await response.json();
+                this.imgUrl = data.imgUrl;
+                this.typeArray = data.type;
             } catch (error) {
                 console.error(error);
             }
