@@ -1,27 +1,6 @@
 <template>
-    <div id="matchup-form">
-        <form @submit.prevent="handleSubmit">
-            <label>My Pokemon</label>
-            <input
-                type="text"
-                v-model="matchup.mine"
-                placeholder="charmander"
-                @focus="clearStatus"
-                required
-            />
-            <label>Enemy Pokemon</label>
-            <input
-                type="text"
-                v-model="matchup.enemy"
-                placeholder="squirtle"
-                @focus="clearStatus"
-                required
-            />
-            <!-- <p v-if="error">
-                ! Please fill out all required fields
-            </p> -->
-            <button>Show Results</button>
-        </form>
+    <div id="matchup">
+        <button @click="handleClick">Matchup Results!</button>
         <div v-if="results.length > 0">
             <p v-for="result in results" :key="result">
                 {{ result }}
@@ -32,7 +11,7 @@
 
 <script>
 export default {
-    name: "matchup-form",
+    name: "matchup",
     data() {
         return {
             submitting: false,
@@ -46,11 +25,12 @@ export default {
         };
     },
     methods: {
-        async handleSubmit() {
+        async handleClick() {
+            console.log("Got clicked??");
             this.submitting = true;
             this.clearStatus();
 
-            try {
+            /* try {
                 const response = await fetch(
                     `http://localhost:3000/matchup?mine=${this.mineToLowerCase}&enemy=${this.enemyToLowerCase}`
                 );
@@ -58,7 +38,7 @@ export default {
                 this.results = this.makeSentence(data);
             } catch (error) {
                 console.error(error);
-            }
+            } */
         },
         makeSentence(array) {
             const convert = {
@@ -80,13 +60,14 @@ export default {
             this.error = false;
         }
     },
-    computed: {
-        mineToLowerCase() {
-            return this.matchup.mine.toLowerCase();
-        },
-        enemyToLowerCase() {
-            return this.matchup.enemy.toLowerCase();
-        }
-    }
+    props: {}
 };
 </script>
+
+<style scoped>
+button {
+    text-align: center;
+    display: block;
+    margin: 0.5rem auto;
+}
+</style>

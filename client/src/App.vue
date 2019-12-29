@@ -8,7 +8,7 @@
             <type-form :side="enemy" />
         </div>
 
-        <!-- <matchup-form /> -->
+        <matchup />
 
         <!-- <pokemon-table :pokemons="pokemons" /> -->
 
@@ -23,7 +23,7 @@
 
 <script>
 import TypeForm from "./components/TypeForm";
-//import MatchupForm from "./components/MatchupForm";
+import Matchup from "./components/Matchup";
 // import PokemonTable from "./components/PokemonTable";
 /* import EmployeeForm from "./components/EmployeeForm.vue";
 import EmployeeTable from "./components/EmployeeTable.vue"; */
@@ -32,8 +32,8 @@ export default {
     name: "app",
     components: {
         //PokemonTable
-        TypeForm
-        //MatchupForm
+        TypeForm,
+        Matchup
     },
     data() {
         return {
