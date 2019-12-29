@@ -39,6 +39,12 @@ const typeMatchup = async (enemy, mine, httpClient) => {
 };
 
 const superagent = require("superagent");
+const typeHandler = async (req, res) => {
+  const { pokemon } = req.params;
+  const result = await getType(pokemon, superagent);
+  res.status(200).send(result);
+};
+
 const matchupHandler = async (req, res) => {
   const { mine, enemy } = req.query;
 
@@ -57,4 +63,4 @@ const matchupHandler = async (req, res) => {
   }
 };
 
-module.exports = { getType, typeMatchup, matchupHandler };
+module.exports = { getType, typeMatchup, matchupHandler, typeHandler };

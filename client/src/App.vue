@@ -3,6 +3,7 @@
 <template>
     <div id="app" class="small-container">
         <h1>Pokemon Matchup</h1>
+        <type-form />
         <matchup-form />
 
         <!-- <pokemon-table :pokemons="pokemons" /> -->
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import TypeForm from "./components/TypeForm";
 import MatchupForm from "./components/MatchupForm";
 // import PokemonTable from "./components/PokemonTable";
 /* import EmployeeForm from "./components/EmployeeForm.vue";
@@ -26,6 +28,7 @@ export default {
     name: "app",
     components: {
         //PokemonTable
+        TypeForm,
         MatchupForm
     },
     data() {
