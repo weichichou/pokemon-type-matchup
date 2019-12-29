@@ -30,7 +30,7 @@ export default {
         async handleSubmit() {
             try {
                 const response = await fetch(
-                    `http://localhost:3000/type/${this.pokemon}`
+                    `http://localhost:3000/type/${this.inputToLowerCase}`
                 );
                 const data = await response.json();
                 this.imgUrl = data.imgUrl;
@@ -38,6 +38,11 @@ export default {
             } catch (error) {
                 console.error(error);
             }
+        }
+    },
+    computed: {
+        inputToLowerCase() {
+            return this.pokemon.toLowerCase();
         }
     },
     props: {
