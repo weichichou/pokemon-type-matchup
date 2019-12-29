@@ -4,8 +4,8 @@
     <div id="app" class="small-container">
         <h1>Pokemon Matchup</h1>
         <div class="flex">
-            <type-form :side="mine" />
-            <type-form :side="enemy" />
+            <type-form :side="mine" @set:poke="setMine" />
+            <type-form :side="enemy" @set:poke="setEnemy" />
         </div>
 
         <matchup />
@@ -38,8 +38,18 @@ export default {
     data() {
         return {
             mine: "my pokemon",
-            enemy: "enemy pokemon"
+            enemy: "enemy pokemon",
+            minePoke: "",
+            enemyPoke: ""
         };
+    },
+    methods: {
+        setMine(pokemon) {
+            this.minePoke = pokemon;
+        },
+        setEnemy(pokemon) {
+            this.enemyPoke = pokemon;
+        }
     }
     /* methods: {
         addEmployee(employee) {

@@ -41,6 +41,7 @@ export default {
                 const data = await response.json();
                 this.imgUrl = data.imgUrl;
                 this.typeArray = data.type;
+                this.$emit("set:poke", this.pokemon);
             } catch (error) {
                 console.error(error);
             }
