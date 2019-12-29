@@ -2,9 +2,24 @@
     <div id="matchup-form">
         <form @submit.prevent="handleSubmit">
             <label>My Pokemon</label>
-            <input type="text" v-model="matchup.mine" />
+            <input
+                type="text"
+                v-model="matchup.mine"
+                placeholder="charmander"
+                @focus="clearStatus"
+                required
+            />
             <label>Enemy Pokemon</label>
-            <input type="text" v-model="matchup.enemy" />
+            <input
+                type="text"
+                v-model="matchup.enemy"
+                placeholder="squirtle"
+                @focus="clearStatus"
+                required
+            />
+            <!-- <p v-if="error">
+                ! Please fill out all required fields
+            </p> -->
             <button>Show Results</button>
         </form>
         <div v-if="results.length > 0">
@@ -32,6 +47,9 @@ export default {
     },
     methods: {
         async handleSubmit() {
+            this.submitting = true;
+            this.clearStatus();
+
             try {
                 const response = await fetch(
                     `http://localhost:3000/matchup?mine=${this.mineToLowerCase}&enemy=${this.enemyToLowerCase}`
@@ -56,6 +74,10 @@ export default {
                     "Normal effectiveness for this type matchup."
             };
             return array.map(item => convert[item]);
+        },
+        clearStatus() {
+            this.success = false;
+            this.error = false;
         }
     },
     computed: {

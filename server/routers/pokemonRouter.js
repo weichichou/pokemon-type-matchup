@@ -6,9 +6,14 @@ const getType = async (input, httpClient) => {
     console.error(error);
     throw error;
   }
-  const { types } = res.body;
-  const result = types.map(item => item.type.name);
-  return result[0];
+  const { sprites, types } = res.body;
+  const result = {
+    imgUrl: "",
+    type: []
+  };
+  result.imgUrl = sprites.front_default;
+  result.type = types.map(item => item.type.name);
+  return result;
 };
 
 const typeMatchup = async (enemy, mine, httpClient) => {
@@ -34,12 +39,20 @@ const typeMatchup = async (enemy, mine, httpClient) => {
 };
 
 const superagent = require("superagent");
+const typeHandler = async (req, res) => {
+  const { pokemon } = req.params;
+  const result = await getType(pokemon, superagent);
+  res.status(200).send(result);
+};
+
 const matchupHandler = async (req, res) => {
   const { mine, enemy } = req.query;
 
   try {
-    const myType = await getType(mine, superagent);
-    const enemyType = await getType(enemy, superagent);
+    const myDetail = await getType(mine, superagent);
+    const myType = myDetail.type[0];
+    const enemyDetail = await getType(enemy, superagent);
+    const enemyType = enemyDetail.type[0];
     const result = await typeMatchup(enemyType, myType, superagent);
     res.status(200).send(result);
   } catch (error) {
@@ -50,4 +63,4 @@ const matchupHandler = async (req, res) => {
   }
 };
 
-module.exports = { getType, typeMatchup, matchupHandler };
+module.exports = { getType, typeMatchup, matchupHandler, typeHandler };
