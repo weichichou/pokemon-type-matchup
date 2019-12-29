@@ -1,7 +1,7 @@
 <template>
     <div id="type-form">
         <form @submit.prevent="handleSubmit">
-            <input type="text" v-model="pokemon" :placeholder="side" />
+            <input type="text" v-model="pokemon" :placeholder="side" required />
             <br />
             <button>Show Type</button>
         </form>
@@ -47,6 +47,10 @@ export default {
 </script>
 
 <style scoped>
+#type-form {
+    margin: 0.5rem;
+}
+
 input {
     text-align: center;
 }

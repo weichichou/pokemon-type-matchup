@@ -72,11 +72,16 @@ export default {
     border: 1px solid #009435;
 } */
 
+h1 {
+    text-align: center;
+}
+
 .small-container {
     max-width: 6980px;
 }
 
 .flex {
     display: flex;
+    justify-content: center;
 }
 </style>
