@@ -1,7 +1,12 @@
 <template>
     <div id="matchup">
-        <button @click="handleClick">Matchup Results!</button>
-        <div v-if="results.length > 0">
+        <button
+            :disabled="!this.$props.mine || !this.$props.enemy"
+            @click="handleClick"
+        >
+            Matchup Results!
+        </button>
+        <div class="result-div" v-if="results.length > 0">
             <p v-for="result in results" :key="result">
                 {{ result }}
             </p>
@@ -17,18 +22,11 @@ export default {
             submitting: false,
             error: false,
             success: false,
-            /* matchup: {
-                mine: "",
-                enemy: ""
-            }, */
-            // myPoke: mine,
-            //enemy: "",
             results: []
         };
     },
     methods: {
         async handleClick() {
-            console.log("Got clicked??");
             this.submitting = true;
             this.clearStatus();
 
@@ -74,5 +72,10 @@ button {
     text-align: center;
     display: block;
     margin: 0.5rem auto;
+}
+
+.result-div {
+    width: 400px;
+    margin: 2rem auto;
 }
 </style>
