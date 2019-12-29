@@ -1,7 +1,13 @@
 <template>
     <div id="type-form">
         <form @submit.prevent="handleSubmit">
-            <input type="text" v-model="pokemon" :placeholder="side" required />
+            <input
+                type="text"
+                v-model="pokemon"
+                :placeholder="side"
+                @focus="clearStatus"
+                required
+            />
             <br />
             <button>Show Type</button>
         </form>
@@ -30,14 +36,26 @@ export default {
         async handleSubmit() {
             try {
                 const response = await fetch(
-                    `http://localhost:3000/type/${this.pokemon}`
+                    `http://localhost:3000/type/${this.inputToLowerCase}`
                 );
                 const data = await response.json();
                 this.imgUrl = data.imgUrl;
                 this.typeArray = data.type;
+                this.$emit("set:poke", this.inputToLowerCase);
             } catch (error) {
                 console.error(error);
             }
+        },
+        clearStatus() {
+            this.pokemon = "";
+            this.imgUrl = "";
+            this.typeArray = [];
+            this.$emit("set:poke", "");
+        }
+    },
+    computed: {
+        inputToLowerCase() {
+            return this.pokemon.toLowerCase();
         }
     },
     props: {
