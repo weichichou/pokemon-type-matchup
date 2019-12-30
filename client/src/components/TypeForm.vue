@@ -87,6 +87,18 @@ export default {
     },
     props: {
         side: String
+    },
+    watch: {
+        pokemon: {
+            handler(val, oldVal) {
+                console.log("props changes?", val, oldVal);
+                if (this.list.includes(val)) {
+                    this.handleSubmit();
+                } else {
+                    console.log("invalid input");
+                }
+            }
+        }
     }
 };
 </script>
