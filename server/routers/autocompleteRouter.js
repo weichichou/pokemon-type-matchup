@@ -3,19 +3,21 @@ const { Pokemon } = require("../db");
 const { Router } = require("express");
 const autocompleteRouter = new Router();
 
-autocompleteRouter.get("/array/:prefix", (req, res, next) => {
-  Pokemon.findAll({
+const getPokemonsByPrefix = async (prefix, database) => {
+  const pokemon = await database.findAll({
     where: {
       name: {
-        [Op.startsWith]: req.params.prefix
+        [Op.startsWith]: prefix
       }
     }
-  })
-    .then(pokemon => {
-      const array = pokemon.map(pokemon => pokemon.dataValues.name);
-      res.status(200).send(array);
-    })
-    .catch(next);
+  });
+  return pokemon.map(pokemon => pokemon.dataValues.name);
+};
+
+autocompleteRouter.get("/array/:prefix", async (req, res, _) => {
+  const { prefix } = req.params;
+  const pokemonArray = await getPokemonsByPrefix(prefix, Pokemon);
+  res.status(200).send(pokemonArray);
 });
 
-module.exports = { autocompleteRouter };
+module.exports = { getPokemonsByPrefix, autocompleteRouter };

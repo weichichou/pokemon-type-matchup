@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { db, Pokemon } = require("./db");
+const { db } = require("./db");
 const { autocompleteRouter } = require("./routers/autocompleteRouter");
 const { matchupHandler, typeHandler } = require("./routers/pokemonRouter");
 const app = express();
