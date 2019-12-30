@@ -2,7 +2,16 @@
 
 <template>
     <div id="type-form">
-        <form @submit.prevent="handleSubmit">
+        <md-autocomplete
+            v-model="pokemon"
+            :md-options="list"
+            @md-changed="getList"
+            @md-opened="getList"
+        >
+            <label>{{ side }}</label>
+        </md-autocomplete>
+
+        <!-- <form @submit.prevent="handleSubmit">
             <input
                 type="text"
                 v-model="pokemon"
@@ -12,8 +21,8 @@
                 required
             />
             <br />
-            <button>Show Type</button>
-        </form>
+            <button>Show Type</button> 
+        </form> -->
         <div v-if="imgUrl !== ''" class="detail-div">
             <img :src="imgUrl" />
             <div class="p-div">
@@ -30,20 +39,21 @@ export default {
     name: "type-form",
     data() {
         return {
+            list: [],
             pokemon: "",
             imgUrl: "",
             typeArray: []
         };
     },
     methods: {
-        async autoComplete() {
-            console.log("change?");
+        async getList() {
             try {
                 const response = await fetch(
                     `http://localhost:3000/array/${this.firstLetterToCaps}`
                 );
-                const data = await response.json();
-                console.log("Data??", data);
+                const list = await response.json();
+                console.log("Data??", list);
+                this.list = list;
             } catch (error) {
                 console.error(error);
             }
@@ -86,14 +96,14 @@ export default {
 #type-form {
     margin: 0.5rem;
 }
-
+/* 
 input {
     text-align: center;
 }
 
 button {
     width: 100%;
-}
+} */
 
 .detail-div {
     display: flex;
