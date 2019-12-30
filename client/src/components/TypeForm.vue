@@ -52,7 +52,6 @@ export default {
                     `http://localhost:3000/array/${this.firstLetterToCaps}`
                 );
                 const list = await response.json();
-                console.log("Data??", list);
                 this.list = list;
             } catch (error) {
                 console.error(error);
@@ -96,14 +95,6 @@ export default {
 #type-form {
     margin: 0.5rem;
 }
-/* 
-input {
-    text-align: center;
-}
-
-button {
-    width: 100%;
-} */
 
 .detail-div {
     display: flex;

@@ -1,7 +1,7 @@
 <template>
     <div id="matchup">
         <md-button
-            class="md-primary"
+            class="md-raised md-primary"
             :disabled="!this.$props.mine || !this.$props.enemy"
             @click="handleClick"
         >
@@ -80,6 +80,8 @@ button {
     text-align: center;
     display: block;
     margin: 0.5rem auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .result-div {
