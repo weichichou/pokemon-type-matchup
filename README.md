@@ -33,4 +33,4 @@ Easily check the results for different type matchup. (For example, water-type po
   - Vue
   - Vue Material
 
-This project was scaffolded using the vue-create cli. [See the standard vue-create docs](./client/vue-create-docs.md).
+This project was scaffolded using the vue-create cli. [See the standard vue-create docs](./client/vue-create-doc.md).
