@@ -33,4 +33,4 @@ Simply input the enemy and your pokemon, and then get the type matchup results. 
   - Vue
   - Vue Material
 
-This project was scaffolded using the vue-create cli. [See the standard vue-create docs](./client/vue-create-doc.md).
+The frontend was scaffolded using the vue-create cli. [See the standard vue-create docs](./client/vue-create-doc.md).
