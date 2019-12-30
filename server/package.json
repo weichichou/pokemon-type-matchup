@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "insert-pokemon-list": "node pokemon-list.js",
     "dev": "nodemon index.js",
     "test": "jest --collect-coverage"
   },
