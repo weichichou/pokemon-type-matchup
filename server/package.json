@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "insert-pokemon-list": "node pokemon-list.js",
     "dev": "nodemon index.js",
     "test": "jest --collect-coverage"
   },
@@ -13,6 +14,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "jest": "^24.9.0",
+    "pg": "^7.17.0",
+    "sequelize": "^5.21.3",
     "superagent": "^5.1.3"
   },
   "devDependencies": {
