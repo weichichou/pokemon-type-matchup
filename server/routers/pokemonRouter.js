@@ -1,3 +1,6 @@
+const { Router } = require("express");
+const pokemonRouter = new Router();
+
 const getType = async (input, httpClient) => {
   let res;
   try {
@@ -63,4 +66,13 @@ const matchupHandler = async (req, res) => {
   }
 };
 
-module.exports = { getType, typeMatchup, matchupHandler, typeHandler };
+pokemonRouter.get("/type/:pokemon", typeHandler);
+pokemonRouter.get("/matchup", matchupHandler);
+
+module.exports = {
+  pokemonRouter,
+  getType,
+  typeMatchup,
+  matchupHandler,
+  typeHandler
+};

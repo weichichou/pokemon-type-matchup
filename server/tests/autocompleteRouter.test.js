@@ -1,17 +1,6 @@
 const { Op } = require("sequelize");
 const { getPokemonsByPrefix } = require("../routers/autocompleteRouter");
-// integration test
-/* describe("get autocomplete array", () => {
-  test("prefix Z", async () => {
-    const input = "Z";
-    const result = await getPokemonsByPrefix(input);
-    expect(result).toContain("Zapdos");
-    expect(result).toContain("Zubat");
-    expect(result.length).toEqual(2);
-  });
-}); */
 
-//unit test
 describe("get autocomplete array", () => {
   test("prefix Z", async () => {
     const input = "Z";
