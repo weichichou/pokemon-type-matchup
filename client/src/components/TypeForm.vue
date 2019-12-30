@@ -1,3 +1,5 @@
+<!-- @change and @keyup?? -->
+
 <template>
     <div id="type-form">
         <form @submit.prevent="handleSubmit">
@@ -6,6 +8,7 @@
                 v-model="pokemon"
                 :placeholder="side"
                 @focus="clearStatus"
+                @change="autoComplete"
                 required
             />
             <br />
@@ -33,6 +36,18 @@ export default {
         };
     },
     methods: {
+        async autoComplete() {
+            console.log("change?");
+            try {
+                const response = await fetch(
+                    `http://localhost:3000/array/${this.firstLetterToCaps}`
+                );
+                const data = await response.json();
+                console.log("Data??", data);
+            } catch (error) {
+                console.error(error);
+            }
+        },
         async handleSubmit() {
             try {
                 const response = await fetch(
@@ -56,6 +71,9 @@ export default {
     computed: {
         inputToLowerCase() {
             return this.pokemon.toLowerCase();
+        },
+        firstLetterToCaps() {
+            return this.pokemon.charAt(0).toUpperCase() + this.pokemon.slice(1);
         }
     },
     props: {
