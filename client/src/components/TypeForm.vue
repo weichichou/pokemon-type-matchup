@@ -1,5 +1,3 @@
-<!-- @change and @keyup?? -->
-
 <template>
     <div id="type-form">
         <md-autocomplete
@@ -11,18 +9,6 @@
             <label>{{ side }}</label>
         </md-autocomplete>
 
-        <!-- <form @submit.prevent="handleSubmit">
-            <input
-                type="text"
-                v-model="pokemon"
-                :placeholder="side"
-                @focus="clearStatus"
-                @change="autoComplete"
-                required
-            />
-            <br />
-            <button>Show Type</button> 
-        </form> -->
         <div v-if="imgUrl !== ''" class="detail-div">
             <img :src="imgUrl" />
             <div class="p-div">
