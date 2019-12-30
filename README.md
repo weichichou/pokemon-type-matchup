@@ -4,7 +4,7 @@
 
 This is my full-stack app for practice purpose.
 
-Pokemon lovers can easily check the results for different type matchup. (For example, water-type pokemons can make double damage to fire-type ones.)
+Easily check the results for different type matchup. (For example, water-type pokemons can make double damage to fire-type ones.)
 
 ## Table of Contents
 
