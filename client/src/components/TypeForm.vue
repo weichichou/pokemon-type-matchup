@@ -42,7 +42,8 @@ export default {
             list: [],
             pokemon: "",
             imgUrl: "",
-            typeArray: []
+            typeArray: [],
+            isInvalid: false
         };
     },
     methods: {
