@@ -1,12 +1,10 @@
-# Pokemon Type Matchup
+# :zap: Pokemon Type Matchup :fire:
 
 ## Introduction
 
 This is my full-stack app for practice purpose.
 
 Pokemon lovers can easily check the results for different type matchup. (For example, water-type pokemons can make double damage to fire-type ones.)
-
-![matchup](/demo/Peek-pokemon.gif)
 
 ## Table of Contents
 
@@ -19,6 +17,8 @@ Pokemon lovers can easily check the results for different type matchup. (For exa
 - Input field with autocomplete function (The first generation of 151 pokemons).
 - Pokemon type is retrieved from [Pokeapi](https://pokeapi.co/).
 - Matchup results are calculated by damage relations.
+
+![matchup](/demo/Peek-pokemon.gif)
 
 ## Technologies Used
 
