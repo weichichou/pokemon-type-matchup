@@ -1,11 +1,12 @@
 <template>
     <div id="matchup">
-        <button
+        <md-button
+            class="md-primary"
             :disabled="!this.$props.mine || !this.$props.enemy"
             @click="handleClick"
         >
             Matchup Results!
-        </button>
+        </md-button>
         <div
             class="result-div"
             v-if="results.length > 0 && this.$props.mine && this.$props.enemy"
