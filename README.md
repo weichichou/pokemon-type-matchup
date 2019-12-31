@@ -18,7 +18,7 @@ Simply input the enemy and your pokemon, and then get the type matchup results. 
 - Pokemon type is retrieved from [Pokeapi](https://pokeapi.co/).
 - Matchup results are calculated by damage relations.
 
-![matchup](/demo/Peek-pokemon.gif)
+![matchup](./matchup.gif)
 
 ## Technologies Used
 
