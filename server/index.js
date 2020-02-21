@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { db } = require("./db");
 const { autocompleteRouter } = require("./routers/autocompleteRouter");
 const { pokemonRouter } = require("./routers/pokemonRouter");
 const app = express();
@@ -15,6 +14,6 @@ app
   .use(pokemonRouter)
   .listen(port, () => console.log(`Listening on port ${port}`));
 
-db.sync()
+/* db.sync()
   .then(() => console.log("Database connected"))
-  .catch(err => console.error(err));
+  .catch(err => console.error(err)); */

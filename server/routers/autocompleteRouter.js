@@ -1,22 +1,15 @@
-const { Op } = require("sequelize");
-const { Pokemon } = require("../db");
 const { Router } = require("express");
 const autocompleteRouter = new Router();
+const { PokemonList } = require("../pokemon-list");
 
-const getPokemonsByPrefix = async (prefix, database) => {
-  const pokemon = await database.findAll({
-    where: {
-      name: {
-        [Op.startsWith]: prefix
-      }
-    }
-  });
-  return pokemon.map(pokemon => pokemon.dataValues.name);
+const getPokemonsByPrefix = (prefix, database) => {
+  const pokemons = database.filter(pokemon => pokemon.name.startsWith(prefix));
+  return pokemons.map(pokemon => pokemon.name);
 };
 
 autocompleteRouter.get("/array/:prefix", async (req, res, _) => {
   const { prefix } = req.params;
-  const pokemonArray = await getPokemonsByPrefix(prefix, Pokemon);
+  const pokemonArray = getPokemonsByPrefix(prefix, PokemonList);
   res.status(200).send(pokemonArray);
 });
 
