@@ -39,6 +39,14 @@ export default {
 </script>
 
 <style>
+@media (max-width: 1024px) {
+    .flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
 h1 {
     text-align: center;
     margin-top: 5rem;
